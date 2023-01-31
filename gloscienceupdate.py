@@ -53,8 +53,8 @@ class gloscience:
             print(skuscript.text)
             res2 = json.loads(skudata)
             respon.append(res2) 
-        print(respon) 
-        print(qtysproduct)   
+        
+        print("three function complete")   
         return respon,qtysproduct      
 
     
@@ -97,18 +97,19 @@ class gloscience:
 
 
         technologies= {
-            "Seller Platfrom": skuwebname,
-            "SKU" : skudata,
-            "Manufacturer Name ":skuwebname,
-            'Manufacturer Code ':skudata,
+            "Seller Platform": skuwebname,
+            "Seller SKU" : skudata,
+            "Manufacturer Name":skuwebname,
+            'Manufacturer Code':skudata,
             'Product Title':skunamedata,
             'Description' : skundescriptions1,
+            "Packaging":skucolempty,
             'QTY':qtysproduct,
             "Catagory" : skucolempty, 
-            "Sub Catagory" : skucolempty,
+            "Subcategory" : skucolempty,
             "Product Page URL" : skuurl, 
             "Attachment URL" : skucolempty,
-            "Images URL" : skuimage
+            "IImages URL" : skuimage
     
             }
         df = pd.DataFrame(technologies)
