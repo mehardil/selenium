@@ -1,0 +1,254 @@
+# import json
+# import pandas as pd
+# import requests
+# from selenium import webdriver
+# from selenium.webdriver.common.by import By
+# import time
+# import json
+
+# class euobserver:
+#     def __init__(self, driver, url):
+#         self.driver = driver
+#         self.url = url
+#         self.list1 = []  
+#         self.list2 = [] 
+
+#     def activedriver(self):
+#         self.driver.get(self.url)
+#         print("first function done") 
+
+#     def getdata(self):
+#         self.activedriver()
+#         with open('data.txt') as f:
+#             lines = f.readlines()
+#             for i, line in enumerate(lines):
+#                 if i % 2 == 0:
+#                     print(line.strip())
+#                     self.list1.append(line.strip())
+#                 else:
+#                     print(line.strip())
+#                     self.list2.append(line.strip())
+#         print(self.list1)
+    
+#     def login(self):
+#         self.getdata()
+#         for usernamedata, passworddata in zip(self.list1, self.list2):
+#             username = driver.find_element("xpath", '//input[@name ="username"]')
+#             password = driver.find_element("xpath", '//input[@name ="password"]')
+#             Searchbutton = driver.find_element("xpath", '//button[@type = "submit"]')
+#             username.send_keys(usernamedata)
+#             password.send_keys(passworddata)
+#             Searchbutton.click()
+#             try:
+#                 div_element =  driver.find_element("xpath", '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div[2]/p')
+#                 if div_element:
+#                     driver.get("https://www.instagram.com/")
+#                     continue
+#             except:
+#                 menubutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[3]/div/div/a/div")
+#                 menubutton.click()
+#                 settingbutton = driver.find_element("xpath", "//div[text()='Settings']")
+#                 settingbutton.click()
+#                 input_field = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div/article/form/div[2]/div/div/input")
+#                 input_field.clear()
+#                 usernameupdate =  "g743"
+#                 input_field.send_keys(usernameupdate)
+#                 submitbutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div/article/form/div[10]/div/div/button")
+#                 submitbutton.click()
+#                 menubutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[3]/div/div/a/div")
+#                 menubutton.click()
+#                 logout = driver.find_element("xpath", "//div[text()='Log out']")
+#                 logout.click()
+            
+# if __name__ == "__main__":
+   
+#     url = "https://www.instagram.com/"
+#     driver = webdriver.Chrome()
+#     scraper = euobserver(driver,url)
+#     driver.implicitly_wait(10)
+#     scraped = scraper.login()
+
+
+
+
+### --> code which code only two thing need to change
+
+import pandas as pd
+import requests
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+import json
+
+class euobserver:
+    def __init__(self, driver, url):
+        self.driver = driver
+        self.url = url
+        self.list1 = []  
+        self.list2 = [] 
+
+    def activedriver(self):
+        self.driver.get(self.url)
+        print("first function done") 
+
+    def getdata(self):
+        self.activedriver()
+        with open('data.txt') as f:
+            lines = f.readlines()
+            for i, line in enumerate(lines):
+                if i % 2 == 0:
+                    print(line.strip())
+                    self.list1.append(line.strip())
+                else:
+                    print(line.strip())
+                    self.list2.append(line.strip())
+        print(self.list1)
+    
+    def login(self):
+        self.getdata()
+        for usernamedata, passworddata in zip(self.list1, self.list2):
+            username = driver.find_element("xpath", '//input[@name ="username"]')
+            password = driver.find_element("xpath", '//input[@name ="password"]')
+            Searchbutton = driver.find_element("xpath", '//button[@type = "submit"]')
+            username.send_keys(usernamedata)
+            password.send_keys(passworddata)
+            Searchbutton.click()
+            try:
+                div_element =  driver.find_element("xpath", '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div[2]/p')
+                if div_element:
+                    driver.get("https://www.instagram.com/")
+                    continue
+            except:
+                try:
+                    menubutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[3]/div/div/a/div")
+                    menubutton.click()
+                    settingbutton = driver.find_element("xpath", "//div[text()='Settings']")
+                    settingbutton.click()
+                    input_field = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div/article/form/div[2]/div/div/input")
+                    input_field.clear()
+                    usernameupdate =  "g77443311"
+                    input_field.send_keys(usernameupdate)
+                    submitbutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div/article/form/div[10]/div/div/button")
+                    submitbutton.click()
+                    menubutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[3]/div/div/a/div")
+                    menubutton.click()
+                    logout = driver.find_element("xpath", "//div[text()='Log out']")
+                    logout.click()
+                except:
+                    menubutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[3]/div/div/a/div")
+                    menubutton.click()
+                    logout = driver.find_element("xpath", "//div[text()='Log out']")
+                    logout.click()
+
+            
+if __name__ == "__main__":
+   
+    url = "https://www.instagram.com/"
+    driver = webdriver.Chrome()
+    scraper = euobserver(driver,url)
+    driver.implicitly_wait(10)
+    scraped = scraper.login()
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import json
+import pandas as pd
+import requests
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+import json
+
+class euobserver:
+    def __init__(self, driver, url):
+        self.driver = driver
+        self.url = url
+        self.list1 = []  
+        self.list2 = [] 
+
+    def activedriver(self):
+        self.driver.get(self.url)
+        print("first function done") 
+
+    def getdata(self):
+        self.activedriver()
+        with open('data.txt') as f:
+            lines = f.readlines()
+            for i, line in enumerate(lines):
+                if i % 2 == 0:
+                    print(line.strip())
+                    self.list1.append(line.strip())
+                else:
+                    print(line.strip())
+                    self.list2.append(line.strip())
+        print(self.list1)
+    
+    def login(self):
+        self.getdata()
+        for usernamedata, passworddata in zip(self.list1, self.list2):
+            username = driver.find_element("xpath", '//input[@name ="username"]')
+            password = driver.find_element("xpath", '//input[@name ="password"]')
+            Searchbutton = driver.find_element("xpath", '//button[@type = "submit"]')
+            username.send_keys(usernamedata)
+            password.send_keys(passworddata)
+            Searchbutton.click()
+            try:
+                div_element =  driver.find_element("xpath", '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div[2]/p')
+                if div_element:
+                    driver.get("https://www.instagram.com/")
+                    continue
+            except:
+                menubutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[3]/div/div/a/div")
+                menubutton.click()
+                settingbutton = driver.find_element("xpath", "//div[text()='Settings']")
+                settingbutton.click()
+                input_field = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div/article/form/div[2]/div/div/input")
+                input_field.clear()
+                usernameupdate =  "g743"
+                input_field.send_keys(usernameupdate)
+                submitbutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div/article/form/div[10]/div/div/button")
+                submitbutton.click()
+                menubutton = driver.find_element("xpath", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[3]/div/div/a/div")
+                menubutton.click()
+                logout = driver.find_element("xpath", "//div[text()='Log out']")
+                logout.click()
+            
+if __name__ == "__main__":
+   
+    url = "https://www.instagram.com/"
+    driver = webdriver.Chrome()
+    scraper = euobserver(driver,url)
+    driver.implicitly_wait(10)
+    scraped = scraper.login()
+    
+    
