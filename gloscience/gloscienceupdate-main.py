@@ -41,7 +41,9 @@ class gloscience:
     def getproductdata(self):
         pageurl = self.getpageUrl()
         qtysproduct = []
-        respon = []           
+        respon = [] 
+        prodcolor = []
+        prodimg = []          
         for k in pageurl:
             driver.get(k)
             print(k)
@@ -49,17 +51,43 @@ class gloscience:
             skuscript = driver.find_element(By.XPATH, "//script[@type = 'application/ld+json']" )
             skudata = skuscript.get_attribute('innerHTML')
             qtys = qty.get_attribute('value')
+
+            temp = []
+            color =  driver.find_elements(By.CSS_SELECTOR , "label.color-swatch")
+            for t1 in color:
+                temp.append(t1.text)
+                st = ""
+                for ee in temp:
+                    st += ee
+            prodcolor.append(st)
+            temp1 = []
+            com =  driver.find_elements(By.CSS_SELECTOR , "a.image-wrap")
+            for t2 in com:
+                temp1.append(t2.get_attribute('href'))
+                st1 = ""
+                for ee1 in temp1:
+                    st1 += ee1
+            prodimg.append(st1)
+
+
+
             qtysproduct.append(qtys)
             print(skuscript.text)
             res2 = json.loads(skudata)
             respon.append(res2) 
         
-        print("three function complete")   
-        return respon,qtysproduct      
+        print("three function complete")
+        print(prodimg)  
+        print("@@@@@@@@@2")
+
+        print("three function complete   color")
+        print(prodcolor)  
+        print("#############")  
+        return respon,qtysproduct ,prodcolor ,prodimg       
 
     
     def resp(self):
-        respon , qtysproduct = self.getproductdata()
+        respon , qtysproduct ,prodcolor ,prodimg = self.getproductdata()
         
         skundescriptions1 = []
         skunamedata = []
@@ -68,6 +96,7 @@ class gloscience:
         skudata =[]
         skuwebname =[]
         skucolempty = []
+        skufullname = []
        
 
         for i in respon:
@@ -94,6 +123,11 @@ class gloscience:
             skuurl.append(url)
 
 
+        
+            # for w in range(0,len(skunamedata)):
+            #     fullname = skunamedata[w] + " ---- " +prodcolor[w]
+            #     skufullname.append(fullname)
+
 
 
         technologies= {
@@ -109,11 +143,11 @@ class gloscience:
             "Subcategory" : skucolempty,
             "Product Page URL" : skuurl, 
             "Attachment URL" : skucolempty,
-            "IImages URL" : skuimage
+            "Images URL" : prodimg
     
             }
         df = pd.DataFrame(technologies)
-        df.to_csv("sellerPlatform.csv",index=False)
+        df.to_csv("gloscience.csv",index=False)
         return df
 
 
@@ -124,4 +158,3 @@ if __name__ == "__main__":
     scraper = gloscience(driver,url)
     scraped = scraper.resp()
     time.sleep(5)
-
